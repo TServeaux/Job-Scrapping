@@ -37,7 +37,7 @@ def getToken():
 
     return response.json()["access_token"]
 
-def searchJob(token, keyWord, codeInsee, distance) :
+def searchJob(token, keyWord, codeInsee) :
     
     response = requests.get("https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
                             
@@ -53,11 +53,26 @@ def searchJob(token, keyWord, codeInsee, distance) :
         }
     )
 
-    print("URL appelée:", response.url)
-    print("Status offres:", response.status_code)
-    print("Détail:", response.text)
     response.raise_for_status()
 
     return response.json().get("resultats", [])
 
-print(searchJob(getToken(),"python","69",30))
+def searchWtj(keyWord, loc, resN):
+
+    client = getKey("./data/user.json")
+
+    response = requests.get(
+        "https://api.adzuna.com/v1/api/jobs/fr/search/1",
+        params={
+            "app_id":           client['wtj']['userId'],
+            "app_key":          client['wtj']['userAcces'],
+            "what":             keyWord,
+            "where":            loc,
+            "results_per_page": resN,
+            "sort_by":          "date"
+        }
+    )
+
+    response.raise_for_status()
+
+    return response.json().get("results", [])
