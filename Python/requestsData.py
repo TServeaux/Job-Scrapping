@@ -37,7 +37,7 @@ def getToken():
 
     return response.json()["access_token"]
 
-def searchJob(token, keyWord, codeInsee) :
+def searchFT(token, keyWord, codeInsee) :
     
     response = requests.get("https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
                             
