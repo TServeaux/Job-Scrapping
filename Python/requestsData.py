@@ -11,7 +11,7 @@ def getKey(data):
 
 def getToken():
 
-    client = getKey("./data/user.json")
+    client = getKey("./data/user.json") #Change here and put ./data/userKeys.json
 
     response = requests.post(
 
@@ -39,7 +39,9 @@ def getToken():
 
 def searchFT(token, keyWord, codeInsee) :
     
-    response = requests.get("https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
+    response = requests.get(
+        
+        "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
                             
         headers={
             "Authorization": f"Bearer {token}",
@@ -62,7 +64,9 @@ def searchWtj(keyWord, loc, resN):
     client = getKey("./data/user.json")
 
     response = requests.get(
+
         "https://api.adzuna.com/v1/api/jobs/fr/search/1",
+
         params={
             "app_id":           client['wtj']['userId'],
             "app_key":          client['wtj']['userAcces'],

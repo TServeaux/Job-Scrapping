@@ -1,0 +1,11 @@
+{
+    "franceTravail" : {
+        "userId" : "INSERT YOUR ID",
+        "userAcces" : "INSERT YOUR KEY"
+    } ,
+    
+    "wtj" : {
+        "userId" : "INSERT YOUR ID",
+        "userAcces" : "INSERT YOUR KEY"
+    }
+}
